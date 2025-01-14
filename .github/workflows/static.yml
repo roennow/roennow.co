@@ -34,8 +34,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'npm'
       - run: npm i
       - run: npm run build
+      - name: Copy files
+        run: |
+          cp src/favicon.ico dist/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
